@@ -28,8 +28,10 @@ function renderFilms(arr, element){
   element.innerHTML = "";
 
   arr.forEach(film =>{
+    var newLink = document.createElement("a");
     var newItem = document.createElement("li");
     var newImg = document.createElement("img");
+    var newBox = document.createElement("div");
     var newHeading = document.createElement("h3");
     var newText = document.createElement("p");
     var newTime = document.createElement("time");
@@ -41,26 +43,32 @@ function renderFilms(arr, element){
     newTime.textContent = dateFormat(film.release_date);
 
     for(var genre of film.genres){
+      
       var newSubItem = document.createElement("li");
       newSubItem.textContent = genre;
+      newSubItem.setAttribute("class", "subitem")
       newSubList.appendChild(newSubItem);
+      newSubList.setAttribute("class", "sublist");
     }
 
+    newLink.setAttribute("class", "list__link")
+    newLink.setAttribute("href", "#")
     newItem.setAttribute("class", "list__item");
     newImg.setAttribute("src", film.poster);
+    newBox.setAttribute("class", "item__box")
     newImg.setAttribute("class", "list__img");
     newText.setAttribute("class", "list__text");
     newTime.setAttribute("datetime", "2022-03-12");
 
-
-
+    newLink.appendChild(newItem);
     newItem.appendChild(newImg);
-    newItem.appendChild(newHeading);
-    newItem.appendChild(newText);
-    newItem.appendChild(newTime);
-    newItem.appendChild(newSubList);
+    newItem.appendChild(newBox);
+    newBox.appendChild(newHeading);
+    newBox.appendChild(newText);
+    newBox.appendChild(newTime);
+    newBox.appendChild(newSubList);
 
-    element.appendChild(newItem);
+    element.appendChild(newLink);
 
   })
 
