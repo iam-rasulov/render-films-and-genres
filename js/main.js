@@ -72,19 +72,19 @@ function renderFilms(arr, element){
 function renderNames(arr, element){
   element.innerHTML = ""
 
-  arr.forEach(name => {
+  arr.forEach(n => {
 
     var newItem = document.createElement("li");
     var newHeading = document.createElement("h3");
     var newBtn = document.createElement("button");
 
     newItem.setAttribute("class", "new-item");
-    newHeading.textContent = name.title;
+    newHeading.textContent = n.title;
     newHeading.setAttribute("class", "new-title");
-    newHeading.dataset.btnId = name.id;
+    newHeading.dataset.btnId = n.id;
     newBtn.setAttribute("class", "new-btn");
     newBtn.textContent = "remove";
-    newBtn.dataset.btnId = name.id;
+    newBtn.dataset.btnId = n.id;
 
     newItem.appendChild(newHeading);
     newItem.appendChild(newBtn);
@@ -100,9 +100,10 @@ function renderNames(arr, element){
   
       const findIndexArr = films.findIndex(film => film.id == btnId);
 
-      const findd = btnId === !findIndexArr
+      if(!splicedList.includes(findIndexArr)){
+        splicedList.push(findIndexArr);
+      }
   
-      splicedList.push(findd)
     }
     
     renderNames(splicedList, newList);
@@ -115,7 +116,7 @@ function renderNames(arr, element){
 
       const btnId = evt.target.dataset.btnId;
   
-      const findIndexArr = films.findIndex(name => name.id == btnId);
+      const findIndexArr = films.findIndex(n => n.id == btnId);
   
       splicedList.splice(findIndexArr, 1);
 
