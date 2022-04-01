@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+h3{
+    margin: 0;
+}
 
 body{
     background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
@@ -11,7 +14,7 @@ body{
 }
 
 .new-list{
-    width: 30%;
+    width: 25%;
     margin: 0 10px 0 auto;
     padding: 20px 30px;
     flex-wrap: wrap;
@@ -21,7 +24,6 @@ body{
     border: 1px solid transparent;
     border-radius: 5px;
 }
-
 
 .new-item{
     display: flex;

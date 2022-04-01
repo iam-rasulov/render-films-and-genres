@@ -48,6 +48,8 @@ function renderFilms(arr, element){
     newImg.setAttribute("src", film.poster);
     newBox.setAttribute("class", "item__box")
     newImg.setAttribute("class", "list__img");
+    newHeading.setAttribute("class", "list__title")
+    newHeading.dataset.btnId = film.id;
     newText.setAttribute("class", "list__text");
     newBtn.setAttribute("class", "list__btn");
     newBtn.textContent = "favorite"
@@ -73,13 +75,13 @@ function renderNames(arr, element){
   arr.forEach(name => {
 
     var newItem = document.createElement("li");
-    newItem.setAttribute("class", "new-item");
-    
     var newHeading = document.createElement("h3");
+    var newBtn = document.createElement("button");
+
+    newItem.setAttribute("class", "new-item");
     newHeading.textContent = name.title;
     newHeading.setAttribute("class", "new-title");
-
-    var newBtn = document.createElement("button");
+    newHeading.dataset.btnId = name.id;
     newBtn.setAttribute("class", "new-btn");
     newBtn.textContent = "remove";
     newBtn.dataset.btnId = name.id;
@@ -103,8 +105,21 @@ function renderNames(arr, element){
       renderFilms(films , elList);
       
     }
+    if(evt.target.matches(".list__title")){
+
+      const btnId = evt.target.dataset.btnId;
+  
+      const findIndexArr = films.findIndex(film => film.id == btnId);
+  
+      splicedList.push(findIndexArr)
+  
+      renderFilms(films , elList);
+      
+    }
     renderNames(splicedList, newList);
+    
   });
+  
 
   newList.addEventListener("click", evt =>{
     if(evt.target.matches(".new-btn")){
@@ -113,9 +128,7 @@ function renderNames(arr, element){
   
       const findIndexArr = films.findIndex(name => name.id == btnId);
   
-      const spliced2 = splicedList.splice(findIndexArr, 1);
-
-      films.push(spliced2)
+      splicedList.splice(findIndexArr, 1);
 
       renderNames(splicedList, newList);
       
