@@ -11,21 +11,23 @@
 
   <form id="form">
 
-    <a href="./index.html"><img src="https://via.placeholder.com/200x40" alt="placeholder"></a>
+    <a href="./index.html"><img src="https://via.placeholder.com/200x45" alt="placeholder"></a>
 
     <div class="form__inner">
 
-      <select class="select2">
+      <input class="search" required type="search" name="search" placeholder="Search films">
+
+      <select required class="select2">
         <option value="Films">Films</option>
         <option value="Hollywood">Hollywood</option>
         <option value="Spanish">Spanish</option>
       </select>
   
-      <select id="select">
+      <select required id="select">
         <option value="genres">Genres</option>
       </select>
   
-      <select class="select3">
+      <select required class="select3">
         <option value="Year">Year</option>
         <option value="1970">1970</option>
       </select>
@@ -36,8 +38,13 @@
 
   </form>
 
-  <ul class="list"></ul>
+  <div class="boxs">
 
+    <ul class="list"></ul>
+    
+    <ul class="new-list"></ul>
+
+  </div>
 
   <script src="./js/films.js"></script>
   <script src="./js/utils.js"></script>

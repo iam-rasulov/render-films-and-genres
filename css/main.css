@@ -1,16 +1,56 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
 }
 
-.list{
-    width: 100%;
-    margin: 0 auto;
-    padding: 0px;
+.boxs{
     display: flex;
-    gap: 20px;
+}
+
+.new-list{
+    width: 30%;
+    margin: 0 10px 0 auto;
+    padding: 20px 30px;
     flex-wrap: wrap;
     list-style: none;
-    justify-content: space-between;    
+    color: white;
+    background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+
+.new-item{
+    display: flex;
+    margin-bottom: 10px;
+    padding: 20px 5px;
+    background: black;
+}
+
+.new-title{
+    width: 50%;
+    color: white;
+}
+
+.new-btn{
+    margin-left: auto;
+    color: white;
+    background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
+}
+
+.list{
+    width: 70%;
+    margin: 0 auto 0 20px;
+    padding: 0px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    list-style: none;
+    border: 1px solid transparent;
+    border-radius: 10px;  
 }
 
 .list__link{
@@ -26,6 +66,11 @@ body{
     justify-content: space-between;
 }
 
+.list__btn{
+    width: 40%;
+    margin-right: auto;
+}
+
 form{
     width: 100%;
     margin: 0 auto;
@@ -38,13 +83,31 @@ form{
 }
 
 .form__inner{
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
 }
 
+.search{
+    width: 30%;
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 20px;
+    outline: none;
+    color: white;
+    border: 1px solid white;
+    opacity: 0.6;
+    background-color: rgb(0, 15, 15);
+}
+.search::placeholder{
+    color: white;
+    background: rgb(0, 15, 15);
+}
+
 select{
     width: 25%;
+    margin-right: 10px;
     padding: 8px;
     border-radius: 5px;
     font-size: 20px;
@@ -54,6 +117,7 @@ select{
 }
 .select2{
     width: 25%;
+    margin-right: 10px;
     padding: 8px;
     border-radius: 5px;
     font-size: 20px;
@@ -85,16 +149,16 @@ select{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 250px;
-    height: 650px;
+    width: 280px;
+    height: 550px;
     color: white;
     opacity: 0.5;
     background-color: rgb(0, 26, 26);
 }
 
 .list__img{
-    width: 250px;
-   
+    width: 100%;
+   height: 300px;
 }
 
 .sublist{

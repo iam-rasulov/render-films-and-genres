@@ -1,5 +1,9 @@
-var elList = document.querySelector(".list");
+const elList = document.querySelector(".list");
+const newList = document.querySelector(".new-list");
+const search = document.querySelector(".search");
 
+
+const splicedList = [];
 
 
 function renderGenes(arr , element){
@@ -24,60 +28,100 @@ function renderGenes(arr , element){
 
 }
 
+
 function renderFilms(arr, element){
   element.innerHTML = "";
 
   arr.forEach(film =>{
-    var newLink = document.createElement("a");
     var newItem = document.createElement("li");
     var newImg = document.createElement("img");
     var newBox = document.createElement("div");
     var newHeading = document.createElement("h3");
     var newText = document.createElement("p");
-    var newTime = document.createElement("time");
-    var newSubList = document.createElement("ul");
+    var newBtn = document.createElement("button");
 
 
     newHeading.textContent = film.title;
     newText.textContent = film.overview.split(" ").slice(0 ,10).join(" ") + "...";
-    newTime.textContent = dateFormat(film.release_date);
 
-    for(var genre of film.genres){
-      
-      var newSubItem = document.createElement("li");
-      newSubItem.textContent = genre;
-      newSubItem.setAttribute("class", "subitem")
-      newSubList.appendChild(newSubItem);
-      newSubList.setAttribute("class", "sublist");
-    }
-
-    newLink.setAttribute("class", "list__link")
-    newLink.setAttribute("href", "#")
     newItem.setAttribute("class", "list__item");
     newImg.setAttribute("src", film.poster);
     newBox.setAttribute("class", "item__box")
     newImg.setAttribute("class", "list__img");
     newText.setAttribute("class", "list__text");
-    newTime.setAttribute("datetime", "2022-03-12");
+    newBtn.setAttribute("class", "list__btn");
+    newBtn.textContent = "favorite"
+    newBtn.dataset.btnId = film.id;
 
-    newLink.appendChild(newItem);
+    
     newItem.appendChild(newImg);
     newItem.appendChild(newBox);
     newBox.appendChild(newHeading);
     newBox.appendChild(newText);
-    newBox.appendChild(newTime);
-    newBox.appendChild(newSubList);
+    newBox.appendChild(newBtn);
 
-    element.appendChild(newLink);
+    element.appendChild(newItem);
 
   })
-
-
 
 }
 
 
+function renderNames(arr, element){
+  element.innerHTML = ""
 
+  arr.forEach(name => {
+
+    var newItem = document.createElement("li");
+    newItem.setAttribute("class", "new-item");
+    
+    var newHeading = document.createElement("h3");
+    newHeading.textContent = name.title;
+    newHeading.setAttribute("class", "new-title");
+
+    var newBtn = document.createElement("button");
+    newBtn.setAttribute("class", "new-btn");
+    newBtn.textContent = "remove";
+    newBtn.dataset.btnId = name.id;
+
+    newItem.appendChild(newHeading);
+    newItem.appendChild(newBtn);
+    element.appendChild(newItem);
+  })
+}
+
+
+  elList.addEventListener("click", evt =>{
+    if(evt.target.matches(".list__btn")){
+
+      const btnId = evt.target.dataset.btnId;
+  
+      const findIndexArr = films.findIndex(film => film.id == btnId);
+  
+      splicedList.push(findIndexArr)
+
+      renderFilms(films , elList);
+      
+    }
+    renderNames(splicedList, newList);
+  });
+
+  newList.addEventListener("click", evt =>{
+    if(evt.target.matches(".new-btn")){
+
+      const btnId = evt.target.dataset.btnId;
+  
+      const findIndexArr = films.findIndex(name => name.id == btnId);
+  
+      const spliced2 = splicedList.splice(findIndexArr, 1);
+
+      films.push(spliced2)
+
+      renderNames(splicedList, newList);
+      
+    }
+    renderFilms(films, elList);
+  });
 
 form.addEventListener("submit", evt =>{
   evt.preventDefault();
@@ -92,14 +136,16 @@ form.addEventListener("submit", evt =>{
   //   filterFilms = films.filter(element => element.genres.includes(selectVal));
   // }
 
-
-
   renderFilms(filterFilms, elList);
 
+  
+  // const searchVal = search.value;
+
+  // let filterSearchs = searchVal == "all" ? films : films.filter(element => element.title.includes(searchVal))  ;
+
+  // renderFilms(filterSearchs, elList)
 
 })
 
-
 renderFilms(films, elList);
 renderGenes(films , select);
-
