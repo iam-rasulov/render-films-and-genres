@@ -74,21 +74,21 @@ function renderNames(arr, element){
 
   arr.forEach(n => {
 
-    var newItem = document.createElement("li");
-    var newHeading = document.createElement("h3");
-    var newBtn = document.createElement("button");
+    let newItem = document.createElement("li");
+    let newBtn = document.createElement("button");
+
+    
+    newItem.textContent = n.title;
+    newBtn.textContent = "remove";
 
     newItem.setAttribute("class", "new-item");
-    newHeading.textContent = n.title;
-    newHeading.setAttribute("class", "new-title");
-    newHeading.dataset.btnId = n.id;
     newBtn.setAttribute("class", "new-btn");
-    newBtn.textContent = "remove";
     newBtn.dataset.btnId = n.id;
 
-    newItem.appendChild(newHeading);
-    newItem.appendChild(newBtn);
+    
     element.appendChild(newItem);
+    newItem.appendChild(newBtn);
+    
   })
 }
 
@@ -96,9 +96,11 @@ function renderNames(arr, element){
   elList.addEventListener("click", evt =>{
     if(evt.target.matches(".list__btn")){
 
-      const btnId = evt.target.dataset.btnId;
+      let btnId = evt.target.dataset.btnId;
   
-      const findIndexArr = films.findIndex(film => film.id == btnId);
+      let findIndexArr = films.findIndex(film => film.id == btnId);
+
+      splicedList.push.findIndexArr;
 
       if(!splicedList.includes(findIndexArr)){
         splicedList.push(findIndexArr);
@@ -123,7 +125,6 @@ function renderNames(arr, element){
       renderNames(splicedList, newList);
       
     }
-    renderFilms(films, elList);
   });
 
 form.addEventListener("submit", evt =>{
