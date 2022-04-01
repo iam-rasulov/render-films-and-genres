@@ -99,23 +99,12 @@ function renderNames(arr, element){
       const btnId = evt.target.dataset.btnId;
   
       const findIndexArr = films.findIndex(film => film.id == btnId);
-  
-      splicedList.push(findIndexArr)
 
-      renderFilms(films , elList);
-      
+      const findd = btnId === !findIndexArr
+  
+      splicedList.push(findd)
     }
-    if(evt.target.matches(".list__title")){
-
-      const btnId = evt.target.dataset.btnId;
-  
-      const findIndexArr = films.findIndex(film => film.id == btnId);
-  
-      splicedList.push(findIndexArr)
-  
-      renderFilms(films , elList);
-      
-    }
+    
     renderNames(splicedList, newList);
     
   });
