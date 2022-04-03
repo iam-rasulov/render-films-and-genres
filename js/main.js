@@ -76,6 +76,7 @@ function renderFilms(arr, element){
 
 function renderNames(arr, element){
   element.innerHTML = ""
+  element.textContent = "Movies catalog "
 
   arr.forEach(name => {
 

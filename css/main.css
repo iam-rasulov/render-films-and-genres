@@ -17,11 +17,14 @@ body{
     width: 30%;
     margin: 0 10px 0 auto;
     padding: 20px 30px;
+    padding-top: 50px;
     flex-wrap: wrap;
     list-style: none;
     color: white;
     border: 1px solid transparent;
     border-radius: 5px;
+    text-align: center;
+    font-size: 24px;
 }
 
 .new-item{
@@ -44,15 +47,16 @@ body{
 }
 
 .list{
-    width: 80%;
+    width: 75%;
     margin: 0 auto 0 20px;
     padding: 0px;
+    padding-top: 50px;
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
     list-style: none;
     border: 1px solid transparent;
-    border-radius: 10px;  
+    border-right: 2px solid white;
 }
 
 .list__link{
@@ -72,28 +76,33 @@ body{
     width: 40%;
     margin-right: 15px;
     margin-left: auto;
+    color: white;
+    background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
 }
 .list__btn2{
     width: 40%;
-    margin-right: 15px;
-    margin-left: auto;
+    color: white;
+    background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
 }
 
 form{
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 30px;
-    padding: 30px 0;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    border-bottom: 2px solid white;
 }
 
 .form__inner{
     width: 70%;
+    padding: 50px 0px;
+    padding-left: 210px;
     display: flex;
     justify-content: space-between;
+    border-left: 2px solid white;
 }
 
 .search{
