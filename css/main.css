@@ -36,6 +36,8 @@ body{
 }
 
 .new-btn{
+    width: 60px;
+    height: 30px;
     margin-left: auto;
     color: white;
     background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
@@ -68,7 +70,13 @@ body{
 
 .list__btn{
     width: 40%;
-    margin-right: auto;
+    margin-right: 15px;
+    margin-left: auto;
+}
+.list__btn2{
+    width: 40%;
+    margin-right: 15px;
+    margin-left: auto;
 }
 
 form{
