@@ -28,6 +28,7 @@ body{
     z-index: 99;
     color: white;
     background-color: black;
+    border-radius: 5px;
 }
 
 .d-none{
@@ -110,6 +111,7 @@ body{
 
 .list__item{  
     position: relative;
+    border-radius: 15px;
 }
 
 .list__link{
