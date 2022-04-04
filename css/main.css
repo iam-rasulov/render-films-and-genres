@@ -59,9 +59,6 @@ body{
     background: linear-gradient(90deg, black, rgb(0, 15, 15), rgb(0, 15, 15), black);
 }
 
-
-
-
 .new-list{
     width: 30%;
     margin: 0 10px 0 auto;
@@ -74,9 +71,14 @@ body{
     border-radius: 5px;
     text-align: center;
     font-size: 24px;
+    position: fixed;
+    z-index: 90;
+    top: 120px;
+    right: -30px;
 }
 
 .new-item{
+    width: 100%;
     display: flex;
     margin-bottom: 10px;
     padding: 20px 5px 20px 20px;
@@ -97,7 +99,7 @@ body{
 }
 
 .list{
-    width: 75%;
+    width: 70%;
     margin: 0 auto 0 20px;
     padding: 0px;
     padding-top: 50px;

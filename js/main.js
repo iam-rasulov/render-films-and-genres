@@ -31,6 +31,23 @@ function renderGenes(arr , element){
 
 }
 
+function renderTitle(arr , element){
+
+  const renderTitles = [];
+
+  arr.forEach((titles) => {
+
+    titles.title.forEach(titl => {
+      if(!renderTitles.includes(titl)){
+        renderTitles.push(titl)
+      }
+    })
+  })
+}
+
+// function renderYear(arr, element){
+
+// }
 
 function renderFilms(arr, element){
   element.innerHTML = "";
@@ -219,6 +236,10 @@ form.addEventListener("submit", evt =>{
   const selectVal = select.value;
 
   let filterFilms = selectVal == "all" ? films : films.filter(element => element.genres.includes(selectVal))  ;
+
+  // const searchVal = search.value;
+
+  // let filterSearch = searchVal == "all" ? films : films.filter(element => element.title.includes(searchtVal))  ;
 
   window.localStorage.setItem("list", JSON.stringify(splicedList));
 
