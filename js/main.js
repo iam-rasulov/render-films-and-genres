@@ -204,7 +204,7 @@ function renderModal(arr, element){
 
       const btnId = evt.target.dataset.removeId;
   
-      const findIndexArr = films.find(n => n.id == btnId);
+      const findIndexArr = splicedList.findIndex(n => n.id == btnId);
   
       splicedList.splice(findIndexArr, 1);
 
@@ -220,7 +220,7 @@ function renderModal(arr, element){
 
       const deleteID = evt.target.dataset.deleteId;
   
-      const findIndexArr = films.find(n => n.id == deleteID);
+      const findIndexArr = modals.findIndex(n => n.id == deleteID);
   
       modals.splice(findIndexArr, 1);
 
@@ -229,6 +229,7 @@ function renderModal(arr, element){
       renderModal(modals, modalBox);
     }
   })
+  
 
 form.addEventListener("submit", evt =>{
   evt.preventDefault();
