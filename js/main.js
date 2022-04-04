@@ -1,11 +1,13 @@
 const elList = document.querySelector(".list");
 const newList = document.querySelector(".new-list");
 const search = document.querySelector(".search");
+const modalBox = document.querySelector(".box");
 
 
 const localSpliced = JSON.parse(window.localStorage.getItem("list"));
 const splicedList = localSpliced || [];
 renderNames(splicedList, newList);
+const modals = [];
 
 function renderGenes(arr , element){
 
@@ -59,6 +61,7 @@ function renderFilms(arr, element){
     newBtn.textContent = "Favorite";
     moreBtn.textContent = "More"
     newBtn.dataset.btnId = film.id;
+    moreBtn.dataset.btnId = film.id;
  
     newItem.appendChild(newImg);
     newItem.appendChild(newBox);
@@ -96,6 +99,60 @@ function renderNames(arr, element){
 }
 
 
+function renderModal(arr, element){
+  element.innerHTML = "";
+
+  arr.forEach(modal => {
+    const modalList = document.createElement("ul");
+    const modalItem = document.createElement("li");
+    const modalBox = document.createElement("div");
+    const modalTitle = document.createElement("h3");
+    const modalImg = document.createElement("img");
+    const modalText = document.createElement("p");
+    const modalTime = document.createElement("time");
+    const modalSubList = document.createElement("ul");
+    const modalDelete = document.createElement("button");
+
+    modalList.classList.add("modal-list");
+    modalItem.classList.add("modal-item");
+    modalBox.classList.add("boxx");
+    modalImg.classList.add("modal-item__img");
+    modalTitle.classList.add("modal-item__title");
+    modalText.classList.add("modal-item__text");
+    modalTime.classList.add("modal-item__time");
+    modalSubList.classList.add("modal-item__sublist");
+    modalDelete.classList.add("modal-delete")
+
+    modalTitle.textContent = modal.title;
+    modalImg.setAttribute("src", modal.poster);
+    modalText.textContent = modal.overview;
+    modalTime.textContent = dateFormat(modal.release_date);
+    modalDelete.dataset.deleteId = modal.id;
+    modalDelete.textContent = "Close";
+
+    arr.forEach(film => {
+
+      film.genres.forEach(genre => {
+        const modalSubItem = document.createElement("li");
+        modalSubItem.textContent = genre;
+        modalSubItem.classList.add("modal-item__sublist__item");
+        modalSubList.appendChild(modalSubItem);
+      })
+    })
+
+    modalBox.appendChild(modalImg);
+    modalBox.appendChild(modalTitle);
+    modalBox.appendChild(modalText);
+    modalBox.appendChild(modalTime);
+    modalBox.appendChild(modalSubList);
+    modalBox.appendChild(modalDelete);
+    modalItem.appendChild(modalBox);
+    modalList.appendChild(modalItem);
+    element.appendChild(modalList);
+
+  })
+}
+
   elList.addEventListener("click", evt =>{
     if(evt.target.matches(".list__btn")){
 
@@ -103,12 +160,23 @@ function renderNames(arr, element){
   
       let findIndexArr = films.find(film => film.id == btnId);
 
-      splicedList.push.findIndexArr;
-
       if(!splicedList.includes(findIndexArr)){
         splicedList.push(findIndexArr);
         window.localStorage.setItem("list", JSON.stringify(splicedList));
       }
+    }
+    if(evt.target.matches(".list__btn2")){
+
+      let btnId = evt.target.dataset.btnId;
+  
+      let findIndexArr = films.find(film => film.id == btnId);
+      
+      if(!modals.includes(findIndexArr)){
+        modals.push(findIndexArr);
+        window.localStorage.setItem("list", JSON.stringify(splicedList));
+      }
+
+      renderModal(modals, modalBox);
     }
     renderNames(splicedList, newList);
   });
@@ -129,6 +197,21 @@ function renderNames(arr, element){
     }
   });
 
+
+  modalBox.addEventListener("click", evt =>{
+    if(evt.target.matches(".modal-delete")){
+
+      const deleteID = evt.target.dataset.deleteId;
+  
+      const findIndexArr = films.find(n => n.id == deleteID);
+  
+      modals.splice(findIndexArr, 1);
+
+      window.localStorage.setItem("list", JSON.stringify(modals));
+
+      renderModal(modals, modalBox);
+    }
+  })
 
 form.addEventListener("submit", evt =>{
   evt.preventDefault();
